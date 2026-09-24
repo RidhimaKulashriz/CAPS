@@ -34,7 +34,7 @@ function Status({ children, tone = "ok" }: { children: React.ReactNode; tone?: "
 
 const researchVideoSources = [
   "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41746-025-01890-x/MediaObjects/41746_2025_1890_MOESM2_ESM.mp4",
-  "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41746-025-01890-x/MediaObjects/41746_2025_1890_MOESM3_ESM.mp4",
+  "https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/neuro-oncology/26/3/10.1093_neuonc_noad202/1/noad202_suppl_supplementary_video_s1.mp4?Expires=2147483647&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA&Signature=hadWa5-g8iaPTXtakuZOnyraCO1GaTdlYEhIsK7c6b5xnIJnsRC1I4ylOUbgUK3dw5J6b-fIvh0LU5VNiXYzV5Dpm1rIdiohoES1f3NqsD3qSc0mZmJcxBZyHCPWbEJesPmnjXCD9veJZl2Lmz~f9sxbkixqlUXj9uFuIdjbOb5ijHHfbDcLsb4nLgLDsvnJWKEVdDwyP4dSCvLweciOsLABnX4xlY7VxnTN59NPLbyVNvazSJXkPylHYOI-Jb~Ny3MHrb5HZIe2tz8VJqJbZaig783sEOUZRGEu0A2qTJDok~FGrFOI5f8TwBB5S5pA4N79NSdL-3inBJ20R9p~Yw__",
   "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs40644-024-00669-9/MediaObjects/40644_2024_669_MOESM3_ESM.mp4",
   "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-026-72776-z/MediaObjects/41467_2026_72776_MOESM4_ESM.mp4",
 ];
@@ -51,8 +51,8 @@ const homeVideos = [
   {
     src: researchVideoPlayers[1],
     source: researchVideoSources[1],
-    title: "Physics-informed prostate-cancer digital twin · Supplementary Movie 2",
-    kind: "Prostate cancer · machine learning · digital twin",
+    title: "3D deep-learning glioma survival model · Grad-CAM demonstration",
+    kind: "Glioma · 3D CNN · survival prediction · Grad-CAM",
   },
   {
     src: researchVideoPlayers[2],
@@ -233,7 +233,7 @@ function FinderPanel({ query, setQuery }: { query: string; setQuery: (v: string)
 
 const pmcRecords = [
   { kind: "VIDEO", label: "PMC 12307736 · Supplement 2", title: "Physics-informed prostate-cancer digital twin · Movie 1", href: researchVideoSources[0], src: researchVideoPlayers[0], article: "PMC12307736" },
-  { kind: "VIDEO", label: "PMC 12307736 · Supplement 3", title: "Physics-informed prostate-cancer digital twin · Movie 2", href: researchVideoSources[1], src: researchVideoPlayers[1], article: "PMC12307736" },
+  { kind: "VIDEO", label: "PMC 10912011 · Supplementary Video 1", title: "3D deep-learning glioma survival model · Grad-CAM demonstration", href: researchVideoSources[1], src: researchVideoPlayers[1], article: "PMC10912011" },
   { kind: "VIDEO", label: "PMC 10905821 · Supplement 3", title: "AI-assisted lung-cancer brain-metastasis imaging", href: researchVideoSources[2], src: researchVideoPlayers[2], article: "PMC10905821" },
   { kind: "VIDEO", label: "Cancer AI research · breast MRI", title: "Deep-learning breast MRI reconstruction", href: researchVideoSources[3], src: researchVideoPlayers[3], article: "Cancer research · publisher supplementary media" },
   ...["11178780", "10101968", "10559609", "6895055", "9674214", "9694576", "10721617", "10905821", "8249617", "10073663", "8423782", "10491676", "12357858"].map(id => ({ kind: "ARTICLE", label: `PMC${id}`, title: `PubMed Central research article · PMC${id}`, href: `https://pmc.ncbi.nlm.nih.gov/articles/PMC${id}/`, article: `PMC${id}` })),
