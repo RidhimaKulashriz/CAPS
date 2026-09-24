@@ -40,7 +40,12 @@ const pmcVideoUrls = [
   "https://" + PMC_HOST + "/articles/instance/10073663/bin/12966_2023_4572_MOESM2_ESM.mp4",
 ];
 
-const pmcPlayerUrls = ["/pmc-stream/0.mp4", "/pmc-stream/1.mp4", "/pmc-stream/2.mp4", "/pmc-stream/3.mp4"];
+const pmcPlayerUrls = [
+  "/research/videos/pmc12307736-movie1.mp4",
+  "/research/videos/pmc12307736-movie2.mp4",
+  "/research/videos/pmc10905821-video1.mp4",
+  "/research/videos/pmc10073663-video1.mp4",
+];
 
 const homeVideos = [
   {
@@ -71,45 +76,21 @@ const homeVideos = [
 
 const moreResearchVideos = [
   {
-    src: "/research-stream/4.mp4",
-    source: "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-026-72776-z/MediaObjects/41467_2026_72776_MOESM4_ESM.mp4",
-    title: "Deep-learning breast MRI reconstruction · Supplementary Video 1",
-    kind: "Breast cancer · DCE-MRI · ELITE + deep learning",
-  },
-  {
-    src: "/research-stream/5.mp4",
-    source: "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-026-72776-z/MediaObjects/41467_2026_72776_MOESM5_ESM.mp4",
-    title: "Deep-learning breast MRI reconstruction · Supplementary Video 2",
-    kind: "Breast cancer · DCE-MRI · reconstruction artifact comparison",
-  },
-  {
-    src: "/research-stream/6.mp4",
-    source: "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-026-72776-z/MediaObjects/41467_2026_72776_MOESM6_ESM.mp4",
-    title: "ResNet breast MRI reconstruction · Supplementary Video 3",
-    kind: "Breast cancer · DCE-MRI · ResNet input/output",
-  },
-  {
-    src: "/research-stream/7.mp4",
-    source: "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41746-024-01372-6/MediaObjects/41746_2024_1372_MOESM2_ESM.mp4",
-    title: "AI-assisted real-time gastric-cancer metastasis recognition",
-    kind: "Gastric cancer · computer vision · intraoperative segmentation",
-  },
-  {
-    src: "/research-stream/8.mp4",
-    source: "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41598-019-54961-x/MediaObjects/41598_2019_54961_MOESM2_ESM.mp4",
-    title: "AI cancer-cell tracking · Supplementary Video 1",
+    src: "/research/videos/pmc6895055-video1.mp4",
+    source: "https://pmc.ncbi.nlm.nih.gov/articles/instance/6895055/bin/41598_2019_54961_MOESM2_ESM.mp4",
+    title: "Cancer-cell tracking demonstration",
     kind: "Breast cancer cells · TrackNet + CellNet + ClassNet",
   },
   {
-    src: "/research-stream/9.mp4",
-    source: "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41598-019-54961-x/MediaObjects/41598_2019_54961_MOESM3_ESM.mp4",
-    title: "AI cancer-cell tracking · Track #01",
-    kind: "Breast cancer cells · StarDist/TrackNet tracking",
+    src: "/research/videos/pmc6895055-video2.mp4",
+    source: "https://pmc.ncbi.nlm.nih.gov/articles/instance/6895055/bin/41598_2019_54961_MOESM3_ESM.mp4",
+    title: "Cancer-cell tracking · Track #01",
+    kind: "Breast cancer cells · automated trajectory analysis",
   },
   {
-    src: "/research-stream/10.mp4",
-    source: "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41598-019-54961-x/MediaObjects/41598_2019_54961_MOESM4_ESM.mp4",
-    title: "AI cancer-cell tracking · Track #07",
+    src: "/research/videos/pmc6895055-video3.mp4",
+    source: "https://pmc.ncbi.nlm.nih.gov/articles/instance/6895055/bin/41598_2019_54961_MOESM4_ESM.mp4",
+    title: "Cancer-cell tracking · Track #07",
     kind: "Breast cancer cells · automated trajectory analysis",
   },
 ];
