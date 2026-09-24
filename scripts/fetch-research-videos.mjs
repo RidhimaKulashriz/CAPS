@@ -6,6 +6,7 @@ import { promisify } from "node:util";
 const execFileAsync = promisify(execFile);
 const OUT_DIR = path.resolve("client/public/research/videos");
 const TMP_DIR = path.resolve(".research-video-cache");
+console.log("[research-media] build source: NCBI Open Access package API");
 
 const SOURCES = [
   {
