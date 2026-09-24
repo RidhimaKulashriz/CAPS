@@ -6,7 +6,7 @@ import { videoResources } from "@/lib/resources";
 import { imageResources } from "@/lib/images";
 
 type Page = "home" | "cases" | "videos" | "images" | "methods";
-const photos = { lab: "/research/ml-lab.jpg", server: "/research/server-room.jpg", slide: "/research/whole-slide.png" };
+const photos = { lab: "/research/ml-lab.jpg", server: "/research/server-room.jpg", slide: "/research/whole-slide.jpg" };
 const featuredVideos = [
   { title: "But what is a neural network?", source: "3Blue1Brown", id: "aircAruvnKk", duration: "19:13", category: "Neural networks" },
   { title: "CS229 · Building large language models", source: "Stanford Online", id: "9vM4p9NN0Ts", duration: "1:20:38", category: "Transformers" },
