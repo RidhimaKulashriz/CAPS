@@ -15,6 +15,10 @@ export { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
 export const startLogin = () => {
   const oauthPortalUrl = import.meta.env.VITE_OAUTH_PORTAL_URL;
   const appId = import.meta.env.VITE_APP_ID;
+  if (!oauthPortalUrl || !appId) {
+    console.info("[OAuth] Login is disabled in public demo mode.");
+    return;
+  }
   const apiOrigin = (import.meta.env.VITE_API_URL || window.location.origin).replace(/\/$/, "");
   const redirectUri = `${apiOrigin}/api/oauth/callback`;
 
