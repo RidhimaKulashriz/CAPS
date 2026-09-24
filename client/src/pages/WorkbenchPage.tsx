@@ -34,22 +34,22 @@ function Status({ children, tone = "ok" }: { children: React.ReactNode; tone?: "
 
 const homeVideos = [
   {
-    src: "/api/pmc-media/0",
+    src: "/api/pmc-media-0",
     title: "Supplementary video 2 · PMC12307736",
     kind: "Cancer research · primary research media",
   },
   {
-    src: "/api/pmc-media/1",
+    src: "/api/pmc-media-1",
     title: "Supplementary video 3 · PMC12307736",
     kind: "Cancer research · primary research media",
   },
   {
-    src: "/api/pmc-media/2",
+    src: "/api/pmc-media-2",
     title: "AI brain-metastasis imaging workflow",
     kind: "Deep learning · lung-cancer metastasis MRI",
   },
   {
-    src: "/api/pmc-media/3",
+    src: "/api/pmc-media-3",
     title: "Real-time AI cancer detection workflow",
     kind: "Deep learning · breast cancer ductoscopy",
   },
