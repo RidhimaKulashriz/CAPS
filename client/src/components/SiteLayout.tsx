@@ -1,42 +1,9 @@
-import { BookOpen, FileText, Image as ImageIcon, Microscope } from "lucide-react";
+import { Activity, Command, Keyboard, Microscope, Radio, Search, Settings2, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
-
-const links = [
-  ["/", "Overview"],
-  ["/cases", "Cases"],
-  ["/ml", "ML library"],
-  ["/atlas", "Image atlas"],
-  ["/sources", "Sources"],
-] as const;
-
-export default function SiteLayout({ children }: { children: React.ReactNode }) {
-  const [location] = useLocation();
-  return (
-    <div className="site">
-      <header className="site-header">
-        <div className="nav-wrap">
-          <Link href="/" className="wordmark">
-            <span><Microscope size={17} /></span>
-            <b>CaPS</b>
-            <small>Cancer Pathology Semantic Capsule</small>
-          </Link>
-          <nav className="main-nav" aria-label="Primary navigation">
-            {links.map(([href, label]) => <Link key={href} href={href} className={location === href ? "active" : ""}>{label}</Link>)}
-          </nav>
-          <div className="header-end"><span className="status-dot" /> Research prototype</div>
-        </div>
-      </header>
-      {children}
-      <footer><div><b>CaPS</b> · Cancer Pathology Semantic Capsule</div><span>Research prototype · Public demo data · No PHI</span></footer>
-    </div>
-  );
-}
-
-export function Breadcrumb({ current }: { current: string }) {
-  return <div className="breadcrumb-line"><Link href="/">CaPS</Link><span>/</span>{current}</div>;
-}
-
-export function SectionIcon({ kind }: { kind: "ml" | "image" | "source" }) {
-  const Icon = kind === "ml" ? BookOpen : kind === "image" ? ImageIcon : FileText;
-  return <Icon size={16} />;
-}
+const links = [["/", "Command center"], ["/cases", "Case workspace"], ["/model", "Model center"], ["/prototypes", "Prototype lab"], ["/embeddings", "Embedding lab"], ["/capsule", "Evidence capsule"], ["/network", "Network lab"], ["/observability", "Observability"]] as const;
+const commands = [["Open case", "/cases/CASE-042"], ["Open viewer", "/cases/CASE-042"], ["Find prototype", "/prototypes"], ["Inspect capsule", "/capsule"], ["Run demo", "/"], ["Open network lab", "/network"], ["Open model center", "/model"], ["Search research", "/research"], ["Search videos", "/ml"], ["Search images", "/atlas"], ["Reset demo", "/"]] as const;
+export default function SiteLayout({ children }: { children: React.ReactNode }) { const [location] = useLocation(); const [open, setOpen] = useState(false); const [query, setQuery] = useState(""); useEffect(() => { const onKey = (e: KeyboardEvent) => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); setOpen(v => !v); } if (e.key === "Escape") setOpen(false); }; window.addEventListener("keydown", onKey); return () => window.removeEventListener("keydown", onKey); }, []); const filtered = commands.filter(([label]) => label.toLowerCase().includes(query.toLowerCase())); return <div className="site-shell"><header className="site-header"><Link href="/" className="site-brand"><span><Microscope size={16} /></span><div><b>CaPS</b><small>cancer pathology semantic capsule</small></div></Link><nav className="site-tabs">{links.map(([href, label]) => <Link key={href} href={href} className={location === href || (href === "/" && location === "/") ? "active" : ""}>{label}</Link>)}</nav><div className="site-actions"><span className="mode-badge"><i />DEMO REPLAY</span><button onClick={() => setOpen(true)}><Command size={14} />⌘K</button><button><Settings2 size={14} /></button></div></header>{children}<footer className="site-footer"><span><b>CaPS</b> · semantic communication of digital pathology</span><span>public demo artifacts · no PHI · no clinical claims</span></footer>{open && <div className="palette-backdrop" onClick={() => setOpen(false)}><div className="command-palette" onClick={e => e.stopPropagation()}><div className="palette-head"><Search size={15} /><input autoFocus value={query} onChange={e => setQuery(e.target.value)} placeholder="Search workspace commands" /><button onClick={() => setOpen(false)}><X size={15} /></button></div><div className="palette-list">{filtered.map(([label, href]) => <Link key={label} href={href} onClick={() => setOpen(false)}><Keyboard size={13} /><span>{label}</span><small>↵</small></Link>)}</div><div className="palette-foot"><span>Navigate</span><span>Enter open</span><span>Esc close</span></div></div></div>}</div>; }
+export function Breadcrumb({ current }: { current: string }) { return <div className="breadcrumb-line"><Link href="/">CaPS</Link><span>/</span>{current}<span className="breadcrumb-status"><i />workspace online</span></div>; }
+export function SectionIcon({ kind }: { kind: "ml" | "image" | "source" }) { return kind === "ml" ? <Radio size={14} /> : kind === "image" ? <Activity size={14} /> : <Search size={14} />; }
+export function WorkbenchFrame({ children }: { children: React.ReactNode }) { return <div className="frame-wrap">{children}</div>; }
