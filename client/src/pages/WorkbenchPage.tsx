@@ -39,7 +39,7 @@ const researchVideoSources = [
   "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-026-72776-z/MediaObjects/41467_2026_72776_MOESM4_ESM.mp4",
 ];
 
-const researchVideoPlayers = ["/research-stream/0.mp4", "/research-stream/1.mp4", "/research-stream/2.mp4", "/research-stream/3.mp4"];
+const researchVideoPlayers = ["/research-stream/0.mp4", "/research-stream/glioma-gradcam.mp4", "/research-stream/2.mp4", "/research-stream/3.mp4"];
 
 const homeVideos = [
   {
