@@ -33,9 +33,26 @@ function Status({ children, tone = "ok" }: { children: React.ReactNode; tone?: "
 
 
 const homeVideos = [
-  { src: "https://commons.wikimedia.org/wiki/Special:Redirect/file/When_cells_cause_cancer_by_giving_the_wrong_messages.webm", title: "Cancer biology · cells sending abnormal signals", kind: "Cancer mechanism · Cancer Research UK" },
-  { src: "https://commons.wikimedia.org/wiki/Special:Redirect/file/10_Things_You_Didn%27t_Know_About_Pancreatic_Cancer.webm", title: "Pancreatic cancer · tumor biology", kind: "Cancer research · Cancer Research UK" },
-  { src: "https://commons.wikimedia.org/wiki/Special:Redirect/file/En.Video-Cancer.webm", title: "Cancer overview · disease mechanisms", kind: "Cancer education · open media" },
+  {
+    src: "https://pmc.ncbi.nlm.nih.gov/articles/instance/12307736/bin/41746_2025_1890_MOESM2_ESM.mp4",
+    title: "Supplementary video 2 · PMC12307736",
+    kind: "Cancer research · primary research media",
+  },
+  {
+    src: "https://pmc.ncbi.nlm.nih.gov/articles/instance/12307736/bin/41746_2025_1890_MOESM3_ESM.mp4",
+    title: "Supplementary video 3 · PMC12307736",
+    kind: "Cancer research · primary research media",
+  },
+  {
+    src: "https://pmc.ncbi.nlm.nih.gov/articles/instance/10905821/bin/40644_2024_669_MOESM3_ESM.mp4",
+    title: "AI brain-metastasis imaging workflow",
+    kind: "Deep learning · lung-cancer metastasis MRI",
+  },
+  {
+    src: "https://pmc.ncbi.nlm.nih.gov/articles/instance/10073663/bin/12966_2023_4572_MOESM2_ESM.mp4",
+    title: "Real-time AI cancer detection workflow",
+    kind: "Deep learning · breast cancer ductoscopy",
+  },
 ];
 
 function HomeVideoDeck() {
