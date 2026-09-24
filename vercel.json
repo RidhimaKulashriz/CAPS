@@ -48,6 +48,10 @@
     {
       "source": "/research-stream/10.mp4",
       "destination": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41598-019-54961-x/MediaObjects/41598_2019_54961_MOESM4_ESM.mp4"
+    },
+    {
+      "source": "/research-stream/glioma-gradcam.mp4",
+      "destination": "https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/neuro-oncology/26/3/10.1093_neuonc_noad202/1/noad202_suppl_supplementary_video_s1.mp4?Expires=2147483647&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA&Signature=hadWa5-g8iaPTXtakuZOnyraCO1GaTdlYEhIsK7c6b5xnIJnsRC1I4ylOUbgUK3dw5J6b-fIvh0LU5VNiXYzV5Dpm1rIdiohoES1f3NqsD3qSc0mZmJcxBZyHCPWbEJesPmnjXCD9veJZl2Lmz~f9sxbkixqlUXj9uFuIdjbOb5ijHHfbDcLsb4nLgLDsvnJWKEVdDwyP4dSCvLweciOsLABnX4xlY7VxnTN59NPLbyVNvazSJXkPylHYOI-Jb~Ny3MHrb5HZIe2tz8VJqJbZaig783sEOUZRGEu0A2qTJDok~FGrFOI5f8TwBB5S5pA4N79NSdL-3inBJ20R9p~Yw__"
     }
   ]
 }
