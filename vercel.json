@@ -26,6 +26,17 @@
           "op": "set",
           "target": { "key": "accept" },
           "args": "video/mp4,*/*"
+        },
+        {
+          "type": "response.headers",
+          "op": "set",
+          "target": { "key": "content-type" },
+          "args": "video/mp4"
+        },
+        {
+          "type": "response.headers",
+          "op": "delete",
+          "target": { "key": "content-disposition" }
         }
       ]
     },
@@ -50,6 +61,17 @@
           "op": "set",
           "target": { "key": "accept" },
           "args": "video/mp4,*/*"
+        },
+        {
+          "type": "response.headers",
+          "op": "set",
+          "target": { "key": "content-type" },
+          "args": "video/mp4"
+        },
+        {
+          "type": "response.headers",
+          "op": "delete",
+          "target": { "key": "content-disposition" }
         }
       ]
     },
@@ -74,6 +96,17 @@
           "op": "set",
           "target": { "key": "accept" },
           "args": "video/mp4,*/*"
+        },
+        {
+          "type": "response.headers",
+          "op": "set",
+          "target": { "key": "content-type" },
+          "args": "video/mp4"
+        },
+        {
+          "type": "response.headers",
+          "op": "delete",
+          "target": { "key": "content-disposition" }
         }
       ]
     },
@@ -98,6 +131,17 @@
           "op": "set",
           "target": { "key": "accept" },
           "args": "video/mp4,*/*"
+        },
+        {
+          "type": "response.headers",
+          "op": "set",
+          "target": { "key": "content-type" },
+          "args": "video/mp4"
+        },
+        {
+          "type": "response.headers",
+          "op": "delete",
+          "target": { "key": "content-disposition" }
         }
       ]
     },
