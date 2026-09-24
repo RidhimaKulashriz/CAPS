@@ -69,6 +69,51 @@ const homeVideos = [
   },
 ];
 
+const moreResearchVideos = [
+  {
+    src: "/research-stream/4.mp4",
+    source: "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-026-72776-z/MediaObjects/41467_2026_72776_MOESM4_ESM.mp4",
+    title: "Deep-learning breast MRI reconstruction · Supplementary Video 1",
+    kind: "Breast cancer · DCE-MRI · ELITE + deep learning",
+  },
+  {
+    src: "/research-stream/5.mp4",
+    source: "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-026-72776-z/MediaObjects/41467_2026_72776_MOESM5_ESM.mp4",
+    title: "Deep-learning breast MRI reconstruction · Supplementary Video 2",
+    kind: "Breast cancer · DCE-MRI · reconstruction artifact comparison",
+  },
+  {
+    src: "/research-stream/6.mp4",
+    source: "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-026-72776-z/MediaObjects/41467_2026_72776_MOESM6_ESM.mp4",
+    title: "ResNet breast MRI reconstruction · Supplementary Video 3",
+    kind: "Breast cancer · DCE-MRI · ResNet input/output",
+  },
+  {
+    src: "/research-stream/7.mp4",
+    source: "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41746-024-01372-6/MediaObjects/41746_2024_1372_MOESM2_ESM.mp4",
+    title: "AI-assisted real-time gastric-cancer metastasis recognition",
+    kind: "Gastric cancer · computer vision · intraoperative segmentation",
+  },
+  {
+    src: "/research-stream/8.mp4",
+    source: "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41598-019-54961-x/MediaObjects/41598_2019_54961_MOESM2_ESM.mp4",
+    title: "AI cancer-cell tracking · Supplementary Video 1",
+    kind: "Breast cancer cells · TrackNet + CellNet + ClassNet",
+  },
+  {
+    src: "/research-stream/9.mp4",
+    source: "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41598-019-54961-x/MediaObjects/41598_2019_54961_MOESM3_ESM.mp4",
+    title: "AI cancer-cell tracking · Track #01",
+    kind: "Breast cancer cells · StarDist/TrackNet tracking",
+  },
+  {
+    src: "/research-stream/10.mp4",
+    source: "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41598-019-54961-x/MediaObjects/41598_2019_54961_MOESM4_ESM.mp4",
+    title: "AI cancer-cell tracking · Track #07",
+    kind: "Breast cancer cells · automated trajectory analysis",
+  },
+];
+
 function HomeVideoDeck() {
   const [failed, setFailed] = useState<Record<string, boolean>>({});
   return <section className="home-video-deck panel">
@@ -142,11 +187,29 @@ function NetworkPanel() { return <div className="focus-layout"><div className="n
 function ObservabilityPanel() { return <div className="focus-layout"><div className="metric-strip big"><Metric label="PIPELINE HEALTH" value="99.98%" meta="12,480 events · 0 errors" /><Metric label="ENCODER P95" value="182 ms" meta="last batch / demo" color="amber" /><Metric label="API P95" value="46 ms" meta="tRPC / tiles.request" color="blue" /><Metric label="CACHE" value="82.4%" meta="memory + edge" color="purple" /></div><div className="panel telemetry-table"><div className="panel-head compact"><div><span className="section-kicker"><Activity size={12} /> EVENT TELEMETRY</span><h2>Execution history</h2></div><Status>NO ERRORS</Status></div>{events.concat([["20:18:15.901", "SEMANTIC_VIEW_READY", "hybrid view mounted", "READY"]]).map(e => <div className="telemetry-row" key={e[0]}><code>{e[0]}</code><b>{e[1]}</b><span>{e[2]}</span><Status>{e[3]}</Status></div>)}</div><div className="panel observability-chart"><span className="section-kicker"><Gauge size={12} /> LATENCY PROFILE</span><div className="large-chart"><MiniSpark color="#e0a45c" points="0,28 8,26 16,27 24,18 32,22 40,10 48,18 56,4 64,13 72,9 80,16 90,1" /></div><div className="chart-legend"><span>encoding <b>412/s</b></span><span>tile p95 <b>182ms</b></span><span>error rate <b>0.00%</b></span></div></div></div>; }
 function ResearchPanel() { const steps = ["H&E", "CELL SEGMENTATION", "CELL GRAPH", "SPATIAL TRANSCRIPTOMICS", "MULTIMODAL FUSION", "TUMOR EVOLUTION", "UNCERTAINTY", "EXPLAINABILITY", "3D DIGITAL TWIN"]; return <div className="focus-layout"><div className="roadmap-intro"><span className="section-kicker"><Sparkles size={12} /> RESEARCH ROADMAP</span><h2>Future architecture, clearly labeled.</h2><p>These are research directions, not implemented clinical functionality. The current CaPS demo ends at semantic communication of public demo slides.</p><Status tone="warn">FUTURE / NOT CLINICAL</Status></div><div className="roadmap-flow">{steps.map((s, i) => <div className={`roadmap-step ${i < 2 ? "available" : "future"}`} key={s}><span>{String(i + 1).padStart(2, "0")}</span><b>{s}</b>{i < steps.length - 1 && <ChevronRight size={15} />}</div>)}</div><div className="panel honesty-panel"><ShieldCheck size={18} /><div><b>Scientific honesty</b><p>CaPS does not claim diagnosis, treatment recommendation, survival prediction, sensitivity, specificity, or biological meaning for unsupervised prototypes.</p></div></div></div>; }
 function VideoPanel({ query, setQuery }: { query: string; setQuery: (v: string) => void }) {
-  const clips = homeVideos.map(clip => ({ ...clip, category: clip.kind, duration: "PMC MP4" }));
+  const clips = [...homeVideos, ...moreResearchVideos].map(clip => ({ ...clip, category: clip.kind, duration: "Research MP4" }));
   const [selectedClip, setSelectedClip] = useState(0);
   const visibleClips = clips.filter(clip => `${clip.title} ${clip.category}`.toLowerCase().includes(query.toLowerCase()));
-  const visibleCatalog = visibleClips.map(({ title, category, duration }) => ({ title, category, duration }));
-  return <div className="focus-layout"><div className="resource-head"><div><span className="section-kicker"><Radio size={12} /> ML RESEARCH VIDEO OBSERVATORY</span><h2>124 indexed resources</h2><p>The supplied PMC cancer-research videos are loaded as dedicated inline research panels.</p></div><div className="resource-filters"><input value={query} onChange={e => setQuery(e.target.value)} placeholder="Search titles, tags, sources" /><span>MP4 · CANCER RESEARCH</span><span>DIRECT PMC MEDIA</span></div></div><div className="video-observatory"><div className="local-player"><video key={clips[selectedClip].src} controls playsInline preload="metadata" src={clips[selectedClip].src} /><div className="player-meta"><span className="local-badge"><i />DIRECT PMC MP4 PLAYBACK</span><h3>{clips[selectedClip].title}</h3><p>{clips[selectedClip].category} · {clips[selectedClip].duration} · PMC supplementary media</p></div></div><div className="clip-queue"><div className="queue-head"><span className="section-kicker">DIRECT CLIP QUEUE</span><small>4 supplied PMC videos</small></div>{clips.map((clip, i) => <button key={clip.src} className={selectedClip === i ? "active" : ""} onClick={() => setSelectedClip(i)}><span className="queue-number">{String(i + 1).padStart(2, "0")}</span><span><b>{clip.title}</b><small>{clip.category} · {clip.duration}</small></span><Play size={14} /></button>)}</div></div><div className="resource-grid">{visibleCatalog.concat(Array.from({ length: Math.max(0, 12 - visibleClips.length) }, (_, i) => ({ title: ["Attention Mechanism", "UNI Foundation Model", "WSI Transformers", "Embedding Spaces", "Digital Pathology AI", "Self-Supervised Learning"][i % 6], category: ["Transformers", "Pathology AI", "Digital Pathology", "Embeddings"][i % 4], duration: `4:${String(12 + i).padStart(2, "0")}` }))).map((clip, i) => <div className="resource-card" key={`${clip.title}-${i}`}><div className="resource-thumb"><span>{String(i + 1).padStart(3, "0")}</span><Play size={18} /></div><b>{clip.title}</b><small>{clip.category} · {clip.duration}</small><button onClick={() => toast("PMC research resource selected; its supplied video panels play above.")}>OPEN RESOURCE <ArrowUpRight size={11} /></button></div>)}</div></div>;
+  const selected = clips[selectedClip] ?? clips[0];
+  return <div className="focus-layout">
+    <div className="resource-head">
+      <div><span className="section-kicker"><Radio size={12} /> ML RESEARCH VIDEO OBSERVATORY</span><h2>{clips.length} verified research videos</h2><p>Real cancer and medical-AI research videos from primary papers; no placeholder duplicates.</p></div>
+      <div className="resource-filters"><input value={query} onChange={e => setQuery(e.target.value)} placeholder="Search titles, methods, cancer types" /><span>MP4 · RESEARCH</span><span>INLINE PLAYBACK</span></div>
+    </div>
+    <div className="video-observatory">
+      <div className="local-player">
+        <video key={selected.src} controls playsInline preload="metadata" src={selected.src} />
+        <div className="player-meta"><span className="local-badge"><i />RESEARCH MP4 PLAYBACK</span><h3>{selected.title}</h3><p>{selected.category} · {selected.duration}</p><a className="download-link" href={selected.source} target="_blank" rel="noreferrer"><ArrowUpRight size={11} /> OPEN ORIGINAL SOURCE</a></div>
+      </div>
+      <div className="clip-queue">
+        <div className="queue-head"><span className="section-kicker">RESEARCH VIDEO QUEUE</span><small>{clips.length} unique videos</small></div>
+        {clips.map((clip, i) => <button key={clip.src} className={selectedClip === i ? "active" : ""} onClick={() => setSelectedClip(i)}><span className="queue-number">{String(i + 1).padStart(2, "0")}</span><span><b>{clip.title}</b><small>{clip.category}</small></span><Play size={14} /></button>)}
+      </div>
+    </div>
+    <div className="resource-grid">
+      {visibleClips.map((clip, i) => { const clipIndex = clips.findIndex(item => item.src === clip.src); return <div className="resource-card" key={clip.src}><div className="resource-thumb"><span>{String(i + 1).padStart(3, "0")}</span><Play size={18} /></div><b>{clip.title}</b><small>{clip.category}</small><button onClick={() => setSelectedClip(clipIndex)}>OPEN IN PLAYER <ArrowUpRight size={11} /></button></div>; })}
+    </div>
+  </div>;
 }
 function ImagePanel({ query, setQuery }: { query: string; setQuery: (v: string) => void }) { return <div className="focus-layout"><div className="resource-head"><div><span className="section-kicker"><Sparkles size={12} /> SCIENTIFIC VISUALIZATION LIBRARY</span><h2>24 provenance records</h2><p>Pathology, microscopy, WSI, architecture, and spatial biology references.</p></div><input value={query} onChange={e => setQuery(e.target.value)} placeholder="Search images and concepts" /></div><div className="image-resource-grid">{["/research/whole-slide.jpg", "/research/ml-lab.jpg", "/research/server-room.jpg", "/research/whole-slide.jpg", "/research/ml-lab.jpg", "/research/server-room.jpg"].map((src, i) => <figure key={`${src}-${i}`}><img src={src} alt="Scientific research reference" loading="lazy" /><figcaption><b>{["Whole-slide pathology", "ML research laboratory", "Compute infrastructure", "Tissue morphology atlas", "Model observability", "Remote review systems"][i]}</b><small>Wikimedia Commons · public reference · provenance recorded</small></figcaption></figure>)}</div></div>; }
 
