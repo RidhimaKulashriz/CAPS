@@ -5,9 +5,9 @@ import { videoResources } from "@/lib/resources";
 import { Breadcrumb } from "@/components/SiteLayout";
 
 const clips = [
-  { title: "Artificial intelligence explained", source: "Wikimedia Commons · bundled clip", src: "/research/videos/ai-explained.webm", duration: "2:23", category: "AI foundations" },
-  { title: "Infinitely wide neural network", source: "Wikimedia Commons · bundled clip", src: "/research/videos/neural-network.webm", duration: "0:08", category: "Neural networks" },
-  { title: "Axonal nerve fibers in a brain", source: "Wikimedia Commons · bundled clip", src: "/research/videos/axonal-network.webm", duration: "0:14", category: "Biological networks" },
+  { title: "Artificial intelligence explained", source: "Wikimedia Commons · bundled clip", src: "/research/videos/ai-explained-short.webm", duration: "0:20", category: "AI foundations" },
+  { title: "Infinitely wide neural network", source: "Wikimedia Commons · bundled clip", src: "/research/videos/neural-network-short.webm", duration: "0:08", category: "Neural networks" },
+  { title: "Axonal nerve fibers in a brain", source: "Wikimedia Commons · bundled clip", src: "/research/videos/axonal-network-short.webm", duration: "0:14", category: "Biological networks" },
 ];
 function Tag({ children }: { children: React.ReactNode }) { return <span className="tag">{children}</span>; }
 export default function MLLibraryPage() {
