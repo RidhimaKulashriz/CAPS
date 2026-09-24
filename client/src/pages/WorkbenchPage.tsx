@@ -32,66 +32,39 @@ function Metric({ label, value, meta, color = "teal" }: { label: string; value: 
 function Status({ children, tone = "ok" }: { children: React.ReactNode; tone?: "ok" | "warn" | "muted" }) { return <span className={`status ${tone}`}><i />{children}</span>; }
 
 
-const PMC_HOST = ["pmc", "ncbi", "nlm", "nih", "gov"].join(".");
-const pmcVideoUrls = [
-  "https://" + PMC_HOST + "/articles/instance/12307736/bin/41746_2025_1890_MOESM2_ESM.mp4",
-  "https://" + PMC_HOST + "/articles/instance/12307736/bin/41746_2025_1890_MOESM3_ESM.mp4",
-  "https://" + PMC_HOST + "/articles/instance/10905821/bin/40644_2024_669_MOESM3_ESM.mp4",
-  "https://" + PMC_HOST + "/articles/instance/10073663/bin/12966_2023_4572_MOESM2_ESM.mp4",
+const researchVideoSources = [
+  "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41746-025-01890-x/MediaObjects/41746_2025_1890_MOESM2_ESM.mp4",
+  "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41746-025-01890-x/MediaObjects/41746_2025_1890_MOESM3_ESM.mp4",
+  "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs40644-024-00669-9/MediaObjects/40644_2024_669_MOESM3_ESM.mp4",
+  "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-026-72776-z/MediaObjects/41467_2026_72776_MOESM4_ESM.mp4",
 ];
 
-const pmcPlayerUrls = [
-  "/research/videos/pmc12307736-movie1.mp4",
-  "/research/videos/pmc12307736-movie2.mp4",
-  "/research/videos/pmc10905821-video1.mp4",
-  "/research/videos/pmc10073663-video1.mp4",
-];
+const researchVideoPlayers = ["/research-stream/0.mp4", "/research-stream/1.mp4", "/research-stream/2.mp4", "/research-stream/3.mp4"];
 
 const homeVideos = [
   {
-    src: pmcPlayerUrls[0],
-    source: pmcVideoUrls[0],
-    title: "Supplementary video 2 · PMC12307736",
-    kind: "Cancer research · primary research media",
+    src: researchVideoPlayers[0],
+    source: researchVideoSources[0],
+    title: "Physics-informed prostate-cancer digital twin · Supplementary Movie 1",
+    kind: "Prostate cancer · machine learning · digital twin",
   },
   {
-    src: pmcPlayerUrls[1],
-    source: pmcVideoUrls[1],
-    title: "Supplementary video 3 · PMC12307736",
-    kind: "Cancer research · primary research media",
+    src: researchVideoPlayers[1],
+    source: researchVideoSources[1],
+    title: "Physics-informed prostate-cancer digital twin · Supplementary Movie 2",
+    kind: "Prostate cancer · machine learning · digital twin",
   },
   {
-    src: pmcPlayerUrls[2],
-    source: pmcVideoUrls[2],
-    title: "AI brain-metastasis imaging workflow",
-    kind: "Deep learning · lung-cancer metastasis MRI",
+    src: researchVideoPlayers[2],
+    source: researchVideoSources[2],
+    title: "AI-assisted lung-cancer brain-metastasis imaging",
+    kind: "Lung cancer · deep learning · MRI",
   },
   {
-    src: pmcPlayerUrls[3],
-    source: pmcVideoUrls[3],
-    title: "Real-time AI cancer detection workflow",
-    kind: "Deep learning · breast cancer ductoscopy",
-  },
-];
-
-const moreResearchVideos = [
-  {
-    src: "/research/videos/pmc6895055-video1.mp4",
-    source: "https://pmc.ncbi.nlm.nih.gov/articles/instance/6895055/bin/41598_2019_54961_MOESM2_ESM.mp4",
-    title: "Cancer-cell tracking demonstration",
-    kind: "Breast cancer cells · TrackNet + CellNet + ClassNet",
-  },
-  {
-    src: "/research/videos/pmc6895055-video2.mp4",
-    source: "https://pmc.ncbi.nlm.nih.gov/articles/instance/6895055/bin/41598_2019_54961_MOESM3_ESM.mp4",
-    title: "Cancer-cell tracking · Track #01",
-    kind: "Breast cancer cells · automated trajectory analysis",
-  },
-  {
-    src: "/research/videos/pmc6895055-video3.mp4",
-    source: "https://pmc.ncbi.nlm.nih.gov/articles/instance/6895055/bin/41598_2019_54961_MOESM4_ESM.mp4",
-    title: "Cancer-cell tracking · Track #07",
-    kind: "Breast cancer cells · automated trajectory analysis",
+    src: researchVideoPlayers[3],
+    source: researchVideoSources[3],
+    title: "Deep-learning breast MRI reconstruction",
+    kind: "Breast cancer · DCE-MRI · deep learning",
   },
 ];
 
@@ -104,7 +77,7 @@ function HomeVideoDeck() {
         onError={() => setFailed(s => ({ ...s, [video.src]: true }))}
         onLoadedMetadata={() => setFailed(s => ({ ...s, [video.src]: false }))}
       />
-      <div className="home-video-caption"><span className="video-number">{String(i + 1).padStart(2, "0")}</span><div><b>{video.title}</b><small>{video.kind} · direct PMC MP4</small>{failed[video.src] && <small className="video-error">PMC media could not be streamed by this browser. Use OPEN SOURCE to verify the original media.</small>}</div></div>
+      <div className="home-video-caption"><span className="video-number">{String(i + 1).padStart(2, "0")}</span><div><b>{video.title}</b><small>{video.kind} · publisher research MP4</small>{failed[video.src] && <small className="video-error">PMC media could not be streamed by this browser. Use OPEN SOURCE to verify the original media.</small>}</div></div>
       <a className="download-link" href={video.source} target="_blank" rel="noreferrer"><ArrowUpRight size={11} /> OPEN SOURCE MP4</a>
     </article>)}</div>
   </section>;
@@ -214,10 +187,10 @@ function FinderPanel({ query, setQuery }: { query: string; setQuery: (v: string)
 
 
 const pmcRecords = [
-  { kind: "VIDEO", label: "PMC 12307736 · Supplement 2", title: "Supplementary video 2", href: pmcVideoUrls[0], src: pmcPlayerUrls[0], article: "PMC12307736" },
-  { kind: "VIDEO", label: "PMC 12307736 · Supplement 3", title: "Supplementary video 3", href: pmcVideoUrls[1], src: pmcPlayerUrls[1], article: "PMC12307736" },
-  { kind: "VIDEO", label: "PMC 10905821 · Supplement 3", title: "Supplementary video 3", href: pmcVideoUrls[2], src: pmcPlayerUrls[2], article: "PMC10905821" },
-  { kind: "VIDEO", label: "PMC 10073663 · Supplement 2", title: "Supplementary video 2", href: pmcVideoUrls[3], src: pmcPlayerUrls[3], article: "PMC10073663" },
+  { kind: "VIDEO", label: "PMC 12307736 · Supplement 2", title: "Physics-informed prostate-cancer digital twin · Movie 1", href: researchVideoSources[0], src: researchVideoPlayers[0], article: "PMC12307736" },
+  { kind: "VIDEO", label: "PMC 12307736 · Supplement 3", title: "Physics-informed prostate-cancer digital twin · Movie 2", href: researchVideoSources[1], src: researchVideoPlayers[1], article: "PMC12307736" },
+  { kind: "VIDEO", label: "PMC 10905821 · Supplement 3", title: "AI-assisted lung-cancer brain-metastasis imaging", href: researchVideoSources[2], src: researchVideoPlayers[2], article: "PMC10905821" },
+  { kind: "VIDEO", label: "Cancer AI research · breast MRI", title: "Deep-learning breast MRI reconstruction", href: researchVideoSources[3], src: researchVideoPlayers[3], article: "Cancer research · publisher supplementary media" },
   ...["11178780", "10101968", "10559609", "6895055", "9674214", "9694576", "10721617", "10905821", "8249617", "10073663", "8423782", "10491676", "12357858"].map(id => ({ kind: "ARTICLE", label: `PMC${id}`, title: `PubMed Central research article · PMC${id}`, href: `https://pmc.ncbi.nlm.nih.gov/articles/PMC${id}/`, article: `PMC${id}` })),
 ];
 
