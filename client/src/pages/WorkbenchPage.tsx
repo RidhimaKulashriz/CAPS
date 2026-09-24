@@ -45,7 +45,7 @@ function HomeVideoDeck() {
 
 function SpatialViewer({ selected, setSelected, mode, setMode, zoom, setZoom }: { selected: Prototype; setSelected: (p: Prototype) => void; mode: string; setMode: (m: string) => void; zoom: number; setZoom: (z: number) => void }) {
   return <section className="viewer-panel panel-grid-bg">
-    <div className="panel-head"><div><span className="section-kicker"><CircleDot size={12} /> WHOLE-SLIDE MAP · REAL SPECIMEN</span><h2>H&amp;E slide / {mode.toUpperCase()} LAYER</h2></div><div className="viewer-tools"><button onClick={() => setZoom(Math.min(1.35, zoom + .1))}><ZoomIn size={14} /></button><button onClick={() => setZoom(Math.max(.75, zoom - .1))}><ZoomOut size={14} /></button><button><Maximize2 size={14} /></button></div></div>
+    <div className="panel-head"><div><span className="section-kicker"><CircleDot size={12} /> REAL WHOLE-SLIDE MAP</span><h2>H&amp;E specimen image / {mode.toUpperCase()} MARKERS</h2></div><div className="viewer-tools"><button onClick={() => setZoom(Math.min(1.35, zoom + .1))}><ZoomIn size={14} /></button><button onClick={() => setZoom(Math.max(.75, zoom - .1))}><ZoomOut size={14} /></button><button><Maximize2 size={14} /></button></div></div>
     <div className="mode-tabs">{["RAW", "SEMANTIC", "HYBRID"].map(m => <button className={mode === m ? "active" : ""} onClick={() => setMode(m)} key={m}>{m}</button>)}<span className="coord-readout">x 4,842 · y 2,991 · L0 · 224px</span></div>
     <div className="spatial-canvas" style={{ "--viewer-scale": zoom } as React.CSSProperties}>
       <div className="wsi-underlay" role="img" aria-label="Real H&E whole-slide pathology specimen" />
