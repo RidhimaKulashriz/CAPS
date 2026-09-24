@@ -2,5 +2,23 @@
   "buildCommand": "pnpm build",
   "outputDirectory": "dist/public",
   "framework": "vite",
-  "installCommand": "pnpm install --frozen-lockfile"
+  "installCommand": "pnpm install --frozen-lockfile",
+  "rewrites": [
+    {
+      "source": "/pmc-stream/0.mp4",
+      "destination": "https://pmc.ncbi.nlm.nih.gov/articles/instance/12307736/bin/41746_2025_1890_MOESM2_ESM.mp4"
+    },
+    {
+      "source": "/pmc-stream/1.mp4",
+      "destination": "https://pmc.ncbi.nlm.nih.gov/articles/instance/12307736/bin/41746_2025_1890_MOESM3_ESM.mp4"
+    },
+    {
+      "source": "/pmc-stream/2.mp4",
+      "destination": "https://pmc.ncbi.nlm.nih.gov/articles/instance/10905821/bin/40644_2024_669_MOESM3_ESM.mp4"
+    },
+    {
+      "source": "/pmc-stream/3.mp4",
+      "destination": "https://pmc.ncbi.nlm.nih.gov/articles/instance/10073663/bin/12966_2023_4572_MOESM2_ESM.mp4"
+    }
+  ]
 }
