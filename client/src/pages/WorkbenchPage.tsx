@@ -40,24 +40,30 @@ const pmcVideoUrls = [
   "https://" + PMC_HOST + "/articles/instance/10073663/bin/12966_2023_4572_MOESM2_ESM.mp4",
 ];
 
+const pmcPlayerUrls = ["/pmc-stream/0.mp4", "/pmc-stream/1.mp4", "/pmc-stream/2.mp4", "/pmc-stream/3.mp4"];
+
 const homeVideos = [
   {
-    src: pmcVideoUrls[0],
+    src: pmcPlayerUrls[0],
+    source: pmcVideoUrls[0],
     title: "Supplementary video 2 · PMC12307736",
     kind: "Cancer research · primary research media",
   },
   {
-    src: pmcVideoUrls[1],
+    src: pmcPlayerUrls[1],
+    source: pmcVideoUrls[1],
     title: "Supplementary video 3 · PMC12307736",
     kind: "Cancer research · primary research media",
   },
   {
-    src: pmcVideoUrls[2],
+    src: pmcPlayerUrls[2],
+    source: pmcVideoUrls[2],
     title: "AI brain-metastasis imaging workflow",
     kind: "Deep learning · lung-cancer metastasis MRI",
   },
   {
-    src: pmcVideoUrls[3],
+    src: pmcPlayerUrls[3],
+    source: pmcVideoUrls[3],
     title: "Real-time AI cancer detection workflow",
     kind: "Deep learning · breast cancer ductoscopy",
   },
@@ -73,7 +79,7 @@ function HomeVideoDeck() {
         onLoadedMetadata={() => setFailed(s => ({ ...s, [video.src]: false }))}
       />
       <div className="home-video-caption"><span className="video-number">{String(i + 1).padStart(2, "0")}</span><div><b>{video.title}</b><small>{video.kind} · direct PMC MP4</small>{failed[video.src] && <small className="video-error">PMC media could not be streamed by this browser. Use OPEN SOURCE to verify the original media.</small>}</div></div>
-      <a className="download-link" href={video.src} target="_blank" rel="noreferrer"><ArrowUpRight size={11} /> OPEN SOURCE MP4</a>
+      <a className="download-link" href={video.source} target="_blank" rel="noreferrer"><ArrowUpRight size={11} /> OPEN SOURCE MP4</a>
     </article>)}</div>
   </section>;
 }
@@ -164,10 +170,10 @@ function FinderPanel({ query, setQuery }: { query: string; setQuery: (v: string)
 
 
 const pmcRecords = [
-  { kind: "VIDEO", label: "PMC 12307736 · Supplement 2", title: "Supplementary video 2", href: pmcVideoUrls[0], article: "PMC12307736" },
-  { kind: "VIDEO", label: "PMC 12307736 · Supplement 3", title: "Supplementary video 3", href: pmcVideoUrls[1], article: "PMC12307736" },
-  { kind: "VIDEO", label: "PMC 10905821 · Supplement 3", title: "Supplementary video 3", href: pmcVideoUrls[2], article: "PMC10905821" },
-  { kind: "VIDEO", label: "PMC 10073663 · Supplement 2", title: "Supplementary video 2", href: pmcVideoUrls[3], article: "PMC10073663" },
+  { kind: "VIDEO", label: "PMC 12307736 · Supplement 2", title: "Supplementary video 2", href: pmcVideoUrls[0], src: pmcPlayerUrls[0], article: "PMC12307736" },
+  { kind: "VIDEO", label: "PMC 12307736 · Supplement 3", title: "Supplementary video 3", href: pmcVideoUrls[1], src: pmcPlayerUrls[1], article: "PMC12307736" },
+  { kind: "VIDEO", label: "PMC 10905821 · Supplement 3", title: "Supplementary video 3", href: pmcVideoUrls[2], src: pmcPlayerUrls[2], article: "PMC10905821" },
+  { kind: "VIDEO", label: "PMC 10073663 · Supplement 2", title: "Supplementary video 2", href: pmcVideoUrls[3], src: pmcPlayerUrls[3], article: "PMC10073663" },
   ...["11178780", "10101968", "10559609", "6895055", "9674214", "9694576", "10721617", "10905821", "8249617", "10073663", "8423782", "10491676", "12357858"].map(id => ({ kind: "ARTICLE", label: `PMC${id}`, title: `PubMed Central research article · PMC${id}`, href: `https://pmc.ncbi.nlm.nih.gov/articles/PMC${id}/`, article: `PMC${id}` })),
 ];
 
@@ -175,5 +181,5 @@ function PmcPanel({ query, setQuery }: { query: string; setQuery: (v: string) =>
   const records = pmcRecords.filter(r => `${r.kind} ${r.label} ${r.title} ${r.article}`.toLowerCase().includes(query.toLowerCase()));
   const videos = records.filter(record => record.kind === "VIDEO");
   const articles = records.filter(record => record.kind === "ARTICLE");
-  return <div className="focus-layout"><div className="resource-head"><div><span className="section-kicker"><BookOpen size={12} /> PMC OPEN RESEARCH LIBRARY</span><h2>{records.length} supplied records</h2><p>Every supplied PMC video is playable in its own panel. Every supplied article has its own visible research card below.</p></div><div className="resource-filters"><input value={query} onChange={e => setQuery(e.target.value)} placeholder="Search PMC IDs, videos, articles" /><span>17 RECORDS</span><span>OPEN ACCESS SOURCES</span></div></div><section className="pmc-section"><div className="pmc-section-title"><span className="section-kicker"><Play size={12} /> SUPPLEMENTARY VIDEO PANELS</span><b>{videos.length} videos</b></div><div className="pmc-video-grid">{videos.map((record, i) => <article className="pmc-video-card" key={record.href}><video controls playsInline preload="metadata" src={record.href} /><div className="pmc-card-body"><span className="section-kicker">VIDEO {String(i + 1).padStart(2, "0")} · {record.label}</span><h3>{record.title}</h3><p>{record.article} · inline PMC media</p><a className="download-link" href={record.href} download><Download size={13} /> DOWNLOAD MP4</a></div></article>)}</div></section><section className="pmc-section"><div className="pmc-section-title"><span className="section-kicker"><BookOpen size={12} /> ARTICLE PANELS</span><b>{articles.length} articles</b></div><div className="pmc-grid">{articles.map((record, i) => <article className="pmc-card" key={record.href}><div className="pmc-type article">ARTICLE</div><div className="pmc-card-body"><span className="section-kicker">ARTICLE {String(i + 1).padStart(2, "0")} · {record.label}</span><h3>{record.title}</h3><p>PubMed Central full-text article · {record.article}</p></div><a className="download-link" href={record.href} target="_blank" rel="noreferrer"><ArrowUpRight size={13} /> OPEN ARTICLE</a></article>)}</div></section>{records.length === 0 && <div className="panel empty-state">No PMC record matches this query.</div>}</div>;
+  return <div className="focus-layout"><div className="resource-head"><div><span className="section-kicker"><BookOpen size={12} /> PMC OPEN RESEARCH LIBRARY</span><h2>{records.length} supplied records</h2><p>Every supplied PMC video is playable in its own panel. Every supplied article has its own visible research card below.</p></div><div className="resource-filters"><input value={query} onChange={e => setQuery(e.target.value)} placeholder="Search PMC IDs, videos, articles" /><span>17 RECORDS</span><span>OPEN ACCESS SOURCES</span></div></div><section className="pmc-section"><div className="pmc-section-title"><span className="section-kicker"><Play size={12} /> SUPPLEMENTARY VIDEO PANELS</span><b>{videos.length} videos</b></div><div className="pmc-video-grid">{videos.map((record, i) => <article className="pmc-video-card" key={record.href}><video controls playsInline preload="metadata" src={record.src} /><div className="pmc-card-body"><span className="section-kicker">VIDEO {String(i + 1).padStart(2, "0")} · {record.label}</span><h3>{record.title}</h3><p>{record.article} · inline PMC media</p><a className="download-link" href={record.href} download><Download size={13} /> DOWNLOAD MP4</a></div></article>)}</div></section><section className="pmc-section"><div className="pmc-section-title"><span className="section-kicker"><BookOpen size={12} /> ARTICLE PANELS</span><b>{articles.length} articles</b></div><div className="pmc-grid">{articles.map((record, i) => <article className="pmc-card" key={record.href}><div className="pmc-type article">ARTICLE</div><div className="pmc-card-body"><span className="section-kicker">ARTICLE {String(i + 1).padStart(2, "0")} · {record.label}</span><h3>{record.title}</h3><p>PubMed Central full-text article · {record.article}</p></div><a className="download-link" href={record.href} target="_blank" rel="noreferrer"><ArrowUpRight size={13} /> OPEN ARTICLE</a></article>)}</div></section>{records.length === 0 && <div className="panel empty-state">No PMC record matches this query.</div>}</div>;
 }
