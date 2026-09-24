@@ -32,10 +32,19 @@ async function startServer() {
   const app = express();
   const server = createServer(app);
   // Allow the separately deployed Vercel frontend to call the Render API.
-  const allowedOrigin = process.env.FRONTEND_URL;
+  const configuredOrigins = (process.env.FRONTEND_URL ?? "")
+    .split(",")
+    .map(origin => origin.trim().replace(/\/$/, ""))
+    .filter(Boolean);
   app.use((req, res, next) => {
     const origin = req.headers.origin;
-    if (origin && (!allowedOrigin || origin === allowedOrigin)) {
+    const isAllowedOrigin = Boolean(
+      origin &&
+      (configuredOrigins.includes(origin) ||
+        /^https:\/\/([a-z0-9-]+\.)*vercel\.app$/i.test(origin) ||
+        /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(origin))
+    );
+    if (origin && isAllowedOrigin) {
       res.setHeader("Access-Control-Allow-Origin", origin);
       res.setHeader("Vary", "Origin");
       res.setHeader("Access-Control-Allow-Credentials", "true");
