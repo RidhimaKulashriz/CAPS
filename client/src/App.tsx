@@ -20,6 +20,8 @@ function Router() { return <Switch>
   <Route path="/ml" component={() => <WorkbenchPage focus="videos" />} />
   <Route path="/atlas" component={() => <WorkbenchPage focus="images" />} />
   <Route path="/sources" component={() => <WorkbenchPage focus="research" />} />
+  <Route path="/papers" component={() => <WorkbenchPage focus="papers" />} />
+  <Route path="/finder" component={() => <WorkbenchPage focus="finder" />} />
   <Route component={NotFound} />
 </Switch>; }
 export default function App() { return <ErrorBoundary><ThemeProvider defaultTheme="dark"><TooltipProvider><Toaster /><SiteLayout><Router /></SiteLayout></TooltipProvider></ThemeProvider></ErrorBoundary>; }
