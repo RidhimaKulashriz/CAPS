@@ -5,9 +5,9 @@
   "framework": "vite",
   "installCommand": "pnpm install --frozen-lockfile",
   "rewrites": [
-    { "source": "/research-stream/0.mp4", "destination": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41746-025-01890-x/MediaObjects/41746_2025_1890_MOESM2_ESM.mp" },
-    { "source": "/research-stream/1.mp4", "destination": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41746-025-01890-x/MediaObjects/41746_2025_1890_MOESM3_ESM.mp" },
-    { "source": "/research-stream/2.mp4", "destination": "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs40644-024-00669-9/MediaObjects/40644_2024_669_MOESM3_ESM.mp" },
-    { "source": "/research-stream/3.mp4", "destination": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-026-72776-z/MediaObjects/41467_2026_72776_MOESM4_ESM.mp" }
+    { "source": "/research-stream/0.mp4", "destination": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41746-025-01890-x/MediaObjects/41746_2025_1890_MOESM2_ESM.mp4" },
+    { "source": "/research-stream/1.mp4", "destination": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41746-025-01890-x/MediaObjects/41746_2025_1890_MOESM3_ESM.mp4" },
+    { "source": "/research-stream/2.mp4", "destination": "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs40644-024-00669-9/MediaObjects/40644_2024_669_MOESM3_ESM.mp4" },
+    { "source": "/research-stream/3.mp4", "destination": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-026-72776-z/MediaObjects/41467_2026_72776_MOESM4_ESM.mp4" }
   ]
 }
