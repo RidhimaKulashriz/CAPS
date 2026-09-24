@@ -56,7 +56,18 @@ const homeVideos = [
 ];
 
 function HomeVideoDeck() {
-  return <section className="home-video-deck panel"><div className="panel-head"><div><span className="section-kicker"><Play size={12} /> CANCER RESEARCH VIDEO PANELS</span><h2>Cancer research video panels</h2></div><span className="panel-note">{homeVideos.length} separate players</span></div><div className="home-video-grid">{homeVideos.map((video, i) => <article className="home-video-card" key={video.src}><video controls playsInline preload="metadata" src={video.src} /><div className="home-video-caption"><span className="video-number">{String(i + 1).padStart(2, "0")}</span><div><b>{video.title}</b><small>{video.kind} · inline playback · Wikimedia Commons</small></div></div></article>)}</div></section>;
+  const [failed, setFailed] = useState<Record<string, boolean>>({});
+  return <section className="home-video-deck panel">
+    <div className="panel-head"><div><span className="section-kicker"><Play size={12} /> CANCER RESEARCH VIDEO PANELS</span><h2>PMC cancer research video panels</h2></div><span className="panel-note">{homeVideos.length} separate players</span></div>
+    <div className="home-video-grid">{homeVideos.map((video, i) => <article className="home-video-card" key={video.src}>
+      <video controls playsInline preload="metadata" crossOrigin="anonymous" src={video.src}
+        onError={() => setFailed(s => ({ ...s, [video.src]: true }))}
+        onLoadedMetadata={() => setFailed(s => ({ ...s, [video.src]: false }))}
+      />
+      <div className="home-video-caption"><span className="video-number">{String(i + 1).padStart(2, "0")}</span><div><b>{video.title}</b><small>{video.kind} · direct PMC MP4</small>{failed[video.src] && <small className="video-error">PMC media could not be streamed by this browser. Use OPEN SOURCE to verify the original media.</small>}</div></div>
+      <a className="download-link" href={video.src} target="_blank" rel="noreferrer"><ArrowUpRight size={11} /> OPEN SOURCE MP4</a>
+    </article>)}</div>
+  </section>;
 }
 
 function SpatialViewer({ selected, setSelected, mode, setMode, zoom, setZoom }: { selected: Prototype; setSelected: (p: Prototype) => void; mode: string; setMode: (m: string) => void; zoom: number; setZoom: (z: number) => void }) {
