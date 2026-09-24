@@ -34,22 +34,22 @@ function Status({ children, tone = "ok" }: { children: React.ReactNode; tone?: "
 
 const homeVideos = [
   {
-    src: "https://pmc.ncbi.nlm.nih.gov/articles/instance/12307736/bin/41746_2025_1890_MOESM2_ESM.mp4",
+    src: "/api/pmc-media/0",
     title: "Supplementary video 2 · PMC12307736",
     kind: "Cancer research · primary research media",
   },
   {
-    src: "https://pmc.ncbi.nlm.nih.gov/articles/instance/12307736/bin/41746_2025_1890_MOESM3_ESM.mp4",
+    src: "/api/pmc-media/1",
     title: "Supplementary video 3 · PMC12307736",
     kind: "Cancer research · primary research media",
   },
   {
-    src: "https://pmc.ncbi.nlm.nih.gov/articles/instance/10905821/bin/40644_2024_669_MOESM3_ESM.mp4",
+    src: "/api/pmc-media/2",
     title: "AI brain-metastasis imaging workflow",
     kind: "Deep learning · lung-cancer metastasis MRI",
   },
   {
-    src: "https://pmc.ncbi.nlm.nih.gov/articles/instance/10073663/bin/12966_2023_4572_MOESM2_ESM.mp4",
+    src: "/api/pmc-media/3",
     title: "Real-time AI cancer detection workflow",
     kind: "Deep learning · breast cancer ductoscopy",
   },
@@ -60,7 +60,7 @@ function HomeVideoDeck() {
   return <section className="home-video-deck panel">
     <div className="panel-head"><div><span className="section-kicker"><Play size={12} /> CANCER RESEARCH VIDEO PANELS</span><h2>PMC cancer research video panels</h2></div><span className="panel-note">{homeVideos.length} separate players</span></div>
     <div className="home-video-grid">{homeVideos.map((video, i) => <article className="home-video-card" key={video.src}>
-      <video controls playsInline preload="metadata" crossOrigin="anonymous" src={video.src}
+      <video controls playsInline preload="metadata" src={video.src}
         onError={() => setFailed(s => ({ ...s, [video.src]: true }))}
         onLoadedMetadata={() => setFailed(s => ({ ...s, [video.src]: false }))}
       />
