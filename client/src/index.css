@@ -9,7 +9,7 @@
 @media (max-width:800px){.paper-card{grid-template-columns:32px 38px 1fr}.paper-card .download-link{grid-column:3;justify-self:start}.finder-row{grid-template-columns:66px 1fr}.finder-row a{grid-column:2}.resource-head{align-items:flex-start;flex-direction:column}.site-tabs{overflow:auto}.workbench-rail{width:150px;flex-basis:150px}}
 .pmc-grid{display:grid;gap:8px}.pmc-card{display:grid;grid-template-columns:88px 1fr auto;gap:16px;align-items:center;border:1px solid var(--line);background:var(--panel);padding:14px 16px}.pmc-type{font:9px var(--mono);letter-spacing:.08em;text-align:center;padding:7px 6px;border:1px solid var(--line2)}.pmc-type.video{color:var(--blue);border-color:#31506b}.pmc-type.article{color:var(--amber);border-color:#665033}.pmc-card-body h3{font-size:14px;margin:5px 0}.pmc-card-body p{color:var(--muted);margin:0}.pmc-card .download-link{justify-self:end}@media (max-width:800px){.pmc-card{grid-template-columns:72px 1fr}.pmc-card .download-link{grid-column:2;justify-self:start}}
 
-/* Flat UI mode: intentionally no gradients, textures, glow, or glass effects. */
+/* Flat UI mode: intentionally no textures, glow, or glass effects. */
 *,*::before,*::after{box-shadow:none!important;text-shadow:none!important;filter:none!important}
 .panel-grid-bg,.wsi-grid,.embedding-plot{background-image:none!important}
 .site-shell,.site-header,.workbench,.workbench-topbar,.workbench-rail,.workbench-main,.panel,.viewer-panel,.telemetry-panel,.metric-strip,.metric,.inspector-block,.resource-card,.image-resource-grid figure,.paper-card,.pmc-card,.finder-row,.network-column,.json-panel,.wide-panel,.capsule-hero,.capsule-grid,.capsule-stat,.command-palette{background-color:var(--bg)!important;background-image:none!important}
