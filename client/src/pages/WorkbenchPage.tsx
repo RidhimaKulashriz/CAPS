@@ -156,10 +156,10 @@ function FinderPanel({ query, setQuery }: { query: string; setQuery: (v: string)
 
 
 const pmcRecords = [
-  { kind: "VIDEO", label: "PMC 12307736 · Supplement 2", title: "Supplementary video 2", href: "https://pmc.ncbi.nlm.nih.gov/articles/instance/12307736/bin/41746_2025_1890_MOESM2_ESM.mp4", article: "PMC12307736" },
-  { kind: "VIDEO", label: "PMC 12307736 · Supplement 3", title: "Supplementary video 3", href: "https://pmc.ncbi.nlm.nih.gov/articles/instance/12307736/bin/41746_2025_1890_MOESM3_ESM.mp4", article: "PMC12307736" },
-  { kind: "VIDEO", label: "PMC 10905821 · Supplement 3", title: "Supplementary video 3", href: "https://pmc.ncbi.nlm.nih.gov/articles/instance/10905821/bin/40644_2024_669_MOESM3_ESM.mp4", article: "PMC10905821" },
-  { kind: "VIDEO", label: "PMC 10073663 · Supplement 2", title: "Supplementary video 2", href: "https://pmc.ncbi.nlm.nih.gov/articles/instance/10073663/bin/12966_2023_4572_MOESM2_ESM.mp4", article: "PMC10073663" },
+  { kind: "VIDEO", label: "PMC 12307736 · Supplement 2", title: "Supplementary video 2", href: "/api/pmc-media/0", article: "PMC12307736" },
+  { kind: "VIDEO", label: "PMC 12307736 · Supplement 3", title: "Supplementary video 3", href: "/api/pmc-media/1", article: "PMC12307736" },
+  { kind: "VIDEO", label: "PMC 10905821 · Supplement 3", title: "Supplementary video 3", href: "/api/pmc-media/2", article: "PMC10905821" },
+  { kind: "VIDEO", label: "PMC 10073663 · Supplement 2", title: "Supplementary video 2", href: "/api/pmc-media/3", article: "PMC10073663" },
   ...["11178780", "10101968", "10559609", "6895055", "9674214", "9694576", "10721617", "10905821", "8249617", "10073663", "8423782", "10491676", "12357858"].map(id => ({ kind: "ARTICLE", label: `PMC${id}`, title: `PubMed Central research article · PMC${id}`, href: `https://pmc.ncbi.nlm.nih.gov/articles/PMC${id}/`, article: `PMC${id}` })),
 ];
 
