@@ -32,24 +32,32 @@ function Metric({ label, value, meta, color = "teal" }: { label: string; value: 
 function Status({ children, tone = "ok" }: { children: React.ReactNode; tone?: "ok" | "warn" | "muted" }) { return <span className={`status ${tone}`}><i />{children}</span>; }
 
 
+const PMC_HOST = ["pmc", "ncbi", "nlm", "nih", "gov"].join(".");
+const pmcVideoUrls = [
+  "https://" + PMC_HOST + "/articles/instance/12307736/bin/41746_2025_1890_MOESM2_ESM.mp4",
+  "https://" + PMC_HOST + "/articles/instance/12307736/bin/41746_2025_1890_MOESM3_ESM.mp4",
+  "https://" + PMC_HOST + "/articles/instance/10905821/bin/40644_2024_669_MOESM3_ESM.mp4",
+  "https://" + PMC_HOST + "/articles/instance/10073663/bin/12966_2023_4572_MOESM2_ESM.mp4",
+];
+
 const homeVideos = [
   {
-    src: "/api/pmc-media-0",
+    src: pmcVideoUrls[0],
     title: "Supplementary video 2 · PMC12307736",
     kind: "Cancer research · primary research media",
   },
   {
-    src: "/api/pmc-media-1",
+    src: pmcVideoUrls[1],
     title: "Supplementary video 3 · PMC12307736",
     kind: "Cancer research · primary research media",
   },
   {
-    src: "/api/pmc-media-2",
+    src: pmcVideoUrls[2],
     title: "AI brain-metastasis imaging workflow",
     kind: "Deep learning · lung-cancer metastasis MRI",
   },
   {
-    src: "/api/pmc-media-3",
+    src: pmcVideoUrls[3],
     title: "Real-time AI cancer detection workflow",
     kind: "Deep learning · breast cancer ductoscopy",
   },
@@ -156,10 +164,10 @@ function FinderPanel({ query, setQuery }: { query: string; setQuery: (v: string)
 
 
 const pmcRecords = [
-  { kind: "VIDEO", label: "PMC 12307736 · Supplement 2", title: "Supplementary video 2", href: "/api/pmc-media/0", article: "PMC12307736" },
-  { kind: "VIDEO", label: "PMC 12307736 · Supplement 3", title: "Supplementary video 3", href: "/api/pmc-media/1", article: "PMC12307736" },
-  { kind: "VIDEO", label: "PMC 10905821 · Supplement 3", title: "Supplementary video 3", href: "/api/pmc-media/2", article: "PMC10905821" },
-  { kind: "VIDEO", label: "PMC 10073663 · Supplement 2", title: "Supplementary video 2", href: "/api/pmc-media/3", article: "PMC10073663" },
+  { kind: "VIDEO", label: "PMC 12307736 · Supplement 2", title: "Supplementary video 2", href: pmcVideoUrls[0], article: "PMC12307736" },
+  { kind: "VIDEO", label: "PMC 12307736 · Supplement 3", title: "Supplementary video 3", href: pmcVideoUrls[1], article: "PMC12307736" },
+  { kind: "VIDEO", label: "PMC 10905821 · Supplement 3", title: "Supplementary video 3", href: pmcVideoUrls[2], article: "PMC10905821" },
+  { kind: "VIDEO", label: "PMC 10073663 · Supplement 2", title: "Supplementary video 2", href: pmcVideoUrls[3], article: "PMC10073663" },
   ...["11178780", "10101968", "10559609", "6895055", "9674214", "9694576", "10721617", "10905821", "8249617", "10073663", "8423782", "10491676", "12357858"].map(id => ({ kind: "ARTICLE", label: `PMC${id}`, title: `PubMed Central research article · PMC${id}`, href: `https://pmc.ncbi.nlm.nih.gov/articles/PMC${id}/`, article: `PMC${id}` })),
 ];
 
