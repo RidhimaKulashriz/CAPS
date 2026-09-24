@@ -47,16 +47,16 @@ function HomeVideoDeck() {
 
 function SpatialViewer({ selected, setSelected, mode, setMode, zoom, setZoom }: { selected: Prototype; setSelected: (p: Prototype) => void; mode: string; setMode: (m: string) => void; zoom: number; setZoom: (z: number) => void }) {
   return <section className="viewer-panel panel-grid-bg">
-    <div className="panel-head"><div><span className="section-kicker"><CircleDot size={12} /> SPATIAL SEMANTIC MAP</span><h2>WSI / {mode.toUpperCase()} LAYER</h2></div><div className="viewer-tools"><button onClick={() => setZoom(Math.min(1.35, zoom + .1))}><ZoomIn size={14} /></button><button onClick={() => setZoom(Math.max(.75, zoom - .1))}><ZoomOut size={14} /></button><button><Maximize2 size={14} /></button></div></div>
+    <div className="panel-head"><div><span className="section-kicker"><CircleDot size={12} /> WHOLE-SLIDE MAP · REAL SPECIMEN</span><h2>H&amp;E slide / {mode.toUpperCase()} LAYER</h2></div><div className="viewer-tools"><button onClick={() => setZoom(Math.min(1.35, zoom + .1))}><ZoomIn size={14} /></button><button onClick={() => setZoom(Math.max(.75, zoom - .1))}><ZoomOut size={14} /></button><button><Maximize2 size={14} /></button></div></div>
     <div className="mode-tabs">{["RAW", "SEMANTIC", "HYBRID"].map(m => <button className={mode === m ? "active" : ""} onClick={() => setMode(m)} key={m}>{m}</button>)}<span className="coord-readout">x 4,842 · y 2,991 · L0 · 224px</span></div>
     <div className="spatial-canvas" style={{ "--viewer-scale": zoom } as React.CSSProperties}>
-      <div className="wsi-underlay" />
+      <div className="wsi-underlay" role="img" aria-label="Real H&E whole-slide pathology specimen" />
       <div className="wsi-grid" />
-      {prototypes.map(p => <button key={p.id} className={`semantic-region ${selected.id === p.id ? "selected" : ""}`} style={{ left: `${p.x}%`, top: `${p.y}%`, background: mode === "RAW" ? "rgba(238,221,194,.22)" : `${p.color}b8`, borderColor: p.color }} onClick={() => setSelected(p)} title={`Prototype ${p.id} · ${p.label}`}><span>{p.id}</span><i style={{ background: p.color }} /></button>)}
+      {prototypes.map(p => <button key={p.id} className={`semantic-region ${selected.id === p.id ? "selected" : ""}`} style={{ left: `${p.x}%`, top: `${p.y}%`, background: p.color, borderColor: p.color }} onClick={() => setSelected(p)} title={`Prototype ${p.id} · ${p.label}`}><span>{p.id}</span><i style={{ background: "#fff" }} /></button>)}
       <div className="viewer-crosshair" />
-      <span className="canvas-label top-left">WSI-HE-0007 / LEVEL 0</span><span className="canvas-label bottom-right">{mode === "RAW" ? "RAW TILE COMPOSITE" : "SEMANTIC OVERLAY · PROTOTYPE MASKS"}</span>
+      <span className="canvas-label top-left">WSI-HE-0007 · REAL H&amp;E SPECIMEN · LEVEL 0</span><span className="canvas-label bottom-right">{mode === "RAW" ? "RAW SPECIMEN VIEW" : "SEMANTIC MARKERS OVER REAL SLIDE"}</span>
     </div>
-    <div className="viewer-footer"><span><Grid3X3 size={12} /> 2,980 tiles indexed</span><span><span className="legend-dot teal" /> tissue <span className="legend-dot amber" /> prototype {selected.id} <span className="legend-dot purple" /> selected region</span><span>scale {Math.round(zoom * 100)}%</span></div>
+    <div className="viewer-footer"><span><Grid3X3 size={12} /> Real H&amp;E specimen · 2,980 tiles indexed</span><span><span className="legend-dot teal" /> tissue <span className="legend-dot amber" /> prototype {selected.id} <span className="legend-dot purple" /> selected marker</span><span>scale {Math.round(zoom * 100)}%</span></div>
   </section>;
 }
 
