@@ -6,6 +6,10 @@ import { ENV } from "./_core/env";
 let _db: ReturnType<typeof drizzle> | null = null;
 
 export async function getDb() {
+  // The current Drizzle schema uses the MySQL dialect. Do not pass a
+  // PostgreSQL/Supabase URL into mysql2; public demo mode should use the
+  // deterministic fallback records until a PostgreSQL migration is applied.
+  if (process.env.DATABASE_URL?.startsWith("postgres")) return null;
   if (!_db && process.env.DATABASE_URL) {
     try {
       _db = drizzle(process.env.DATABASE_URL);
@@ -45,21 +49,36 @@ export async function getUserByOpenId(openId: string) {
 export async function listCases() {
   const db = await getDb();
   if (!db) return [];
-  return db.select().from(cases).orderBy(desc(cases.updatedAt));
+  try {
+    return await db.select().from(cases).orderBy(desc(cases.updatedAt));
+  } catch (error) {
+    console.warn("[Database] cases table unavailable; using demo fallback:", error instanceof Error ? error.message : error);
+    return [];
+  }
 }
 
 export async function createCase(input: typeof cases.$inferInsert) {
   const db = await getDb();
   if (!db) return null;
-  await db.insert(cases).values(input);
-  const rows = await db.select().from(cases).where(eq(cases.caseId, input.caseId)).limit(1);
-  return rows[0] ?? null;
+  try {
+    await db.insert(cases).values(input);
+    const rows = await db.select().from(cases).where(eq(cases.caseId, input.caseId)).limit(1);
+    return rows[0] ?? null;
+  } catch (error) {
+    console.warn("[Database] case creation unavailable:", error instanceof Error ? error.message : error);
+    return null;
+  }
 }
 
 export async function createTileRequest(input: typeof tileRequests.$inferInsert) {
   const db = await getDb();
   if (!db) return null;
-  await db.insert(tileRequests).values(input);
-  const rows = await db.select().from(tileRequests).where(eq(tileRequests.tileId, input.tileId)).orderBy(desc(tileRequests.createdAt)).limit(1);
-  return rows[0] ?? null;
+  try {
+    await db.insert(tileRequests).values(input);
+    const rows = await db.select().from(tileRequests).where(eq(tileRequests.tileId, input.tileId)).orderBy(desc(tileRequests.createdAt)).limit(1);
+    return rows[0] ?? null;
+  } catch (error) {
+    console.warn("[Database] tile request persistence unavailable:", error instanceof Error ? error.message : error);
+    return null;
+  }
 }
