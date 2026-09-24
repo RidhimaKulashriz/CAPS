@@ -19,6 +19,34 @@
     {
       "source": "/pmc-stream/3.mp4",
       "destination": "https://pmc.ncbi.nlm.nih.gov/articles/instance/10073663/bin/12966_2023_4572_MOESM2_ESM.mp4"
+    },
+    {
+      "source": "/research-stream/4.mp4",
+      "destination": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-026-72776-z/MediaObjects/41467_2026_72776_MOESM4_ESM.mp4"
+    },
+    {
+      "source": "/research-stream/5.mp4",
+      "destination": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-026-72776-z/MediaObjects/41467_2026_72776_MOESM5_ESM.mp4"
+    },
+    {
+      "source": "/research-stream/6.mp4",
+      "destination": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-026-72776-z/MediaObjects/41467_2026_72776_MOESM6_ESM.mp4"
+    },
+    {
+      "source": "/research-stream/7.mp4",
+      "destination": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41746-024-01372-6/MediaObjects/41746_2024_1372_MOESM2_ESM.mp4"
+    },
+    {
+      "source": "/research-stream/8.mp4",
+      "destination": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41598-019-54961-x/MediaObjects/41598_2019_54961_MOESM2_ESM.mp4"
+    },
+    {
+      "source": "/research-stream/9.mp4",
+      "destination": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41598-019-54961-x/MediaObjects/41598_2019_54961_MOESM3_ESM.mp4"
+    },
+    {
+      "source": "/research-stream/10.mp4",
+      "destination": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41598-019-54961-x/MediaObjects/41598_2019_54961_MOESM4_ESM.mp4"
     }
   ]
 }
